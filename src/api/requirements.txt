@@ -1,0 +1,9 @@
+fastapi
+uvicorn[standard]
+pandas
+sqlalchemy
+psycopg2-binary
+joblib
+numpy
+apscheduler
+python-multipart

@@ -1,0 +1,28 @@
+version: '3.9'
+
+services:
+  api:
+    build:
+      context: ./src/api
+    container_name: fastapi-service
+    ports:
+      - "9004:8000"
+    restart: always
+    networks:
+      - appnet
+
+  ui:
+    build:
+      context: ./src/ui
+    container_name: streamlit-ui
+    ports:
+      - "9007:8501"
+    depends_on:
+      - api
+    environment:
+      - API_ENDPOINT=http://api:8000
+    networks:
+      - appnet
+
+networks:
+  appnet:
